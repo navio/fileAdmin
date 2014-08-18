@@ -1,8 +1,11 @@
-module.exports = function(app){
+module.exports = function(app,express){
 
-	app.get('/', function(req, res) {
-		res.send('this is a sample!');	
+	var router = express.Router();
+	
+	router.get('/', function(req, res) {
+		res.send('im the about page!');	
 	});
-
+	
+	app.use('/', router);
 
 };
