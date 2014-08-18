@@ -4,12 +4,11 @@ var express    = require('express');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
- 
-
 
 var port = process.env.PORT || 8080;
 
-require(__dirname +'/router')(app);
+
+require(__dirname +'/router')(app,express);
 
 app.listen(port);
 console.log('Server running on port ' + port);
