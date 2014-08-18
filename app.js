@@ -1,19 +1,16 @@
-var express    = require('express');
+var express    = require('express'),
 	app        = express();
-	bodyParser = require('body-parser');
+	
+// Configuration File.
+var opt = require(__dirname + "/config")(app);
+var _   = require('lodash');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b051064a076fa9ea3e7dd873e5a9b34a186fd1b6
-
-var port = process.env.PORT || 8080;
-
-
+// Master Routes.
 require(__dirname +'/router')(app,express);
 
-app.listen(port);
-console.log('Server running on port ' + port);
+// Static Files
+app.use(express.static(__dirname + '/public'));
+
+app.listen(opt.port);
+
+console.log('Server running on port ' + opt.port);
