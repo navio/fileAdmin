@@ -1,17 +1,16 @@
-var io  = require('socket.io').listen(5001),
-	dl  = require('delivery'),
-	fs  = require('fs');
-
-io.sockets.on('connection', function(socket){
-  var delivery = dl.listen(socket);
-  delivery.on('receive.success',function(file){
-
-	fs.writeFile(file.name,file.buffer, function(err){
-	  if(err){
-		console.log('File could not be saved.');
-	  }else{
-		console.log('File saved.');
-	  };
+module.exports = function(app){
+	
+	var server 	= require('http').Server(app);
+	var io 		= require('socket.io')(server)
+	
+	server.listen(9000);
+	
+	
+	io.on('connection', function (socket) {
+	  socket.emit('news', { hello: 'world' });
+	  socket.on('my other event', function (data) {
+		console.log(data);
+	  });
 	});
-  });
-});
+	
+}
