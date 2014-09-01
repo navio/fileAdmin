@@ -9,6 +9,8 @@
     "lodash": "~2.4.1",
     "socket.io": "*",
     "multer": "~0.1.4",
-    "socketio-file-upload": "~0.2.7"
+    "socketio-file-upload": "~0.2.7",
+    "mkdirp": "*",
+    "extfs" : "*"
   }
 }
